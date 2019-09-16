@@ -1,0 +1,60 @@
+
+[
+    {
+        "package_id":"SIH000001",
+        "package_name": "Coastal Breeze",
+        "source":"Chennai",
+        "fare_id":"FARE001"
+
+    },
+    {
+        "package_id":"SIH000002",
+        "source":"Mumbai",
+        "package_name": "Coastal Breeze",
+        "fare_id":"FARE002"
+
+    },
+    {
+        "package_id":"SIH000003",
+        "package_name": "Vijayanagar Experience",
+        "source":"Bengaluru",
+        "fare_id":"FARE003"
+
+    },
+    {
+        "package_id":"SIH000004",
+        "source":"Mumbai",
+        "package_name": "Vijayanagar Experience",
+        "fare_id":"FARE004"
+
+    },
+    {
+        "package_id":"SIH000005",
+        "package_name": "Deccan Dilbaug",
+        "source":"Mumbai",
+        "fare_id":"FARE005"
+
+    },
+    {
+        "package_id":"SIH000006",
+        "source":"Bengaluru",
+        "package_name": "Deccan Dilbaug",
+        "fare_id":"FARE006"
+
+    },
+    {
+        "package_id":"SIH000007",
+        "package_name": "Eastern Seascape",
+        "source":"Hyderabad",
+        "fare_id":"FARE007"
+
+    },
+    {
+        "package_id":"SIH000008",
+        "source":"Chennai",
+        "package_name": "Eastern Seascape",
+        "fare_id":"FARE008"
+
+    }
+
+]
