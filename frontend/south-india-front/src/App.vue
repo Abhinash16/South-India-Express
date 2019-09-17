@@ -31,7 +31,7 @@ export default {
   margin-top: 60px;
 }
 .padding{
-  margin-top: 15px;
+  margin-top: 90px;
 }
   .bd-placeholder-img {
         font-size: 1.125rem;

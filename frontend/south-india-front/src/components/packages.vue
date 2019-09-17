@@ -24,15 +24,11 @@
             </div>
       </div>
     </div>  
-    <div class="container" v-if="packages.length == 0">
-    <div class="carousel">
-      <h1>:(</h1>
-      <p> Please connect the Backend Server</p>
-    </div>
+    <div class="container text-center" v-if="packages.length == 0">
+    <div class="loader"></div>
     </div>  
   </div>
 </template>
-
 
 <script>
 export default {
@@ -46,7 +42,7 @@ export default {
       }
   },
   beforeMount() {
-    this.$http.get('http://localhost:8081/api/packages')
+    this.$http.get('http://localhost:8080/api/packages')
       .then(response=>{
         this.packages= response.body;
       })
@@ -67,7 +63,32 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+.packages-container{
+font-family: 'Livvic', sans-serif;
+margin-top:100px;;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  margin: 20px auto;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
 
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 
 

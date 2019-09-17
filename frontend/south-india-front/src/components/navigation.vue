@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top m-0 p-0">
     <a class="navbar-brand"><router-link to="/">South India Heritage</router-link></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,7 @@
    
 </template>
 <script src="https://unpkg.com/vue-slider"></script>
+
 <script>
 export default {
   name: 'navigation',
@@ -35,21 +36,38 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 li.nav-item {
     padding-left: 8px;
     margin: 4px;
     text-decoration: none;
 }
-
+.navbar-toggler{
+  color: black;
+  background-color:black
+}
 .navbar-collapse ul li a{
-  color: white;
+  color: black;
     text-decoration: none;
     background-color: transparent;
 }
 .navbar-brand a {
-    color: #FF993F;
+    color: black;
     text-decoration: none;
     background-color: transparent;
+    padding-left: 5px;
 }
+.navbar{
+  background-color: #fff;
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    font-family: 'Ubuntu', sans-serif;
+    padding: 10px 5px 10px 5px !important;}
+
+.navbar-collapse ul li a:hover{
+  color: green
+}
+
 </style>

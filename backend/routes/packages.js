@@ -8,7 +8,9 @@ var Packages=JSON.parse(readJson);
 
 
 router.get('/', (req, res) => {
-  res.send(Packages);
+	setTimeout(function(){ 
+		  res.send(Packages);
+	}, 1000);
 });
 
 router.get('/:id', (req, res) => {
