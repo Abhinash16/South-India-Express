@@ -12,13 +12,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const packages = Packages.filter((value)=>{
-    return value.package_id = req.params.id
+    const packofone = Packages.filter((value)=>{
+    return value.package_id == req.params.id
     });
     
-    if (!packages) return res.status(404).send('The packages with the given ID was not found.');
+    if (!packofone) return res.status(404).send('The packages with the given ID was not found.');
     
-    res.send(packages);
+    res.send(packofone);
     });
 
 module.exports = router; 
