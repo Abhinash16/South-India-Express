@@ -7,7 +7,7 @@
               <div class="card mb-4 shadow-sm">
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                 <div class="card-body">
-                <p class="card-text">
+                <p class="card-text" style="font-family: 'Squada One', cursive;font-size:20px">
                   {{pack.package_name}}
                 </p>
                   <p class="card-text">
@@ -39,12 +39,18 @@ export default {
       return{
           toggler:false,
           packages:[],
+          prices:[]
       }
   },
   beforeMount() {
     this.$http.get('http://localhost:8080/api/packages')
       .then(response=>{
         this.packages= response.body;
+      })
+
+      this.$http.get('http://localhost:8080/api/prices')
+      .then(response=>{
+        this.prices= response.body;
       })
   },
   props: {
@@ -64,6 +70,8 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
+
 .packages-container{
 font-family: 'Livvic', sans-serif;
 margin-top:100px;;

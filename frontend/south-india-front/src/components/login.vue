@@ -1,24 +1,51 @@
 <template>
   <form class="form-signin">
+
   <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Enter your Credentials</h1>
+  <div class="error" v-if="error">
+      <p>{{result.msg}}</p>
+    </div>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  <input class="form-control" placeholder="Email address" autofocus v-model="username">
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <input class="form-control" placeholder="Password" v-model="password">
+  <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" v-on:click="signup">Login</button>
   </form>
 </template>
 
 <script>
 export default {
   name: 'packages',
-  props: {
+  components: {
+  },
+  data(){
+    return{
+        username:'',
+        password:'',
+        result:[],
+        sucessful:[],
+        error:false
+    }
+  },
+  methods:{
+    signup: function(){
+       this.$http.post('http://localhost:8080/api/login',{
+         username: this.username,
+        password: this.password
+       })
+      .then(response=>{
+      this.result= response.body;
+      
+      if(this.result.err == 0){
+        console.log(this.result)
+        localStorage.setItem('username', this.result.username)
+        this.$router.push('/packages')
+        }else{
+          this.error = true
+        }
+      })
+    }
   }
 }
 </script>
@@ -53,5 +80,8 @@ export default {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.error{
+  color: red;
 }
 </style>

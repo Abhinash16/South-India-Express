@@ -37,5 +37,7 @@ export default {
 </script>
 
 <style scoped>
-
+.footer{
+  /* background-image: url("../assets/hero.png"); */
+}
 </style>

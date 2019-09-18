@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top m-0 p-0">
-    <a class="navbar-brand"><router-link to="/">South India Heritage</router-link></a>
+    <a class="navbar-brand"><router-link to="/">South India Heritage Express</router-link></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,11 +13,19 @@
          <a><router-link to="/packages">Packages</router-link></a> 
         </li>
         <li class="nav-item">
-         <a><router-link to="/login">Login</router-link></a> 
-        </li>
-        <li class="nav-item">
          <a><router-link to="/contact">Contact Us</router-link></a> 
         </li>
+        <li class="nav-item" v-if="!login">
+         <a><router-link to="/login">Login</router-link></a> 
+        </li>
+         <li class="nav-item dropdown" v-if="login">
+            <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">My Account</a>
+              <a class="dropdown-item" href="#">My Bookings</a>
+               <a class="dropdown-item" v-on:click="logout">Logout</a> 
+            </div>
+          </li>
       </ul>
     </div>
   </nav>
@@ -28,7 +36,24 @@
 <script>
 export default {
   name: 'navigation',
-  props: {
+  data(){
+    return{
+      login:false
+    }
+  },
+  created(){
+      var y = localStorage.getItem('username')
+      if(y != null){
+        this.login = true
+      }else{
+        this.login= false
+      }
+  },
+  methods:{
+    logout: function(){
+      localStorage.removeItem('username')
+      this.login= false
+    }
   }
 }
 </script>
