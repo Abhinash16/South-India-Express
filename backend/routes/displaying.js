@@ -11,10 +11,14 @@ var fs=require('fs');
 var readJson =fs.readFileSync('price.json', 'utf8');
 var Prices=JSON.parse(readJson);
 
+var mergedList = _.map(Packages, function(item){
+    return _.extend(item, _.find(Prices, { fare_id: item.fare_id }));
+});
+console.log(mergedList)
 
 router.get('/', (req, res) => {
 	setTimeout(function(){ 
-		  res.send(Packages);
+		  res.send(mergedList);
 	}, 1000);
 });
 

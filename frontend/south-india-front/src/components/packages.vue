@@ -5,7 +5,7 @@
       <div class="row">
             <div class="col-md-4" v-for="pack in packages">
               <div class="card mb-4 shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <img v-bind:src="pack.image" height="180px">
                 <div class="card-body">
                 <p class="card-text" style="font-family: 'Squada One', cursive;font-size:20px">
                   {{pack.package_name}}
@@ -13,10 +13,13 @@
                   <p class="card-text">
                   From: {{pack.source}}
                 </p>
+                 <p class="card-text">
+                  Base Fare: {{pack.price_exeutive}}
+                </p>
                   
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Book Now</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" v-on:click="view(pack.package_id)">View more</button>
                     </div>
                   </div>
                 </div>
@@ -43,7 +46,7 @@ export default {
       }
   },
   beforeMount() {
-    this.$http.get('http://localhost:8080/api/packages')
+    this.$http.get('http://localhost:8080/api/display')
       .then(response=>{
         this.packages= response.body;
       })
@@ -57,11 +60,8 @@ export default {
               specific:[]
   },
   methods:{
-    viewmore: function(id){
-        this.$http.get('http://localhost:8080/api/packages/'+id)
-        .then(response=>{
-        this.specific= response.body
-      })
+    view: function(id){
+      this.$router.push({ path: '/' , params: { id: this.packages.id }})
     }
   }
 }
