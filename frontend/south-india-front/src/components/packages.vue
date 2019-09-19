@@ -61,7 +61,8 @@ export default {
   },
   methods:{
     view: function(id){
-      this.$router.push({ path: '/' , params: { id: this.packages.id }})
+     var path='/'+id;
+      this.$router.push({ path: path , params: { id:id }})
     }
   }
 }

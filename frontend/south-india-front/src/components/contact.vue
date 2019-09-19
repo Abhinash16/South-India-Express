@@ -82,7 +82,7 @@ export default {
        })
       .then(response=>{
       this.result= response.body;
-      console.log(this.result)
+    //   console.log(this.result);
       if(this.result.err == 0){
           alert(this.result.msg)
             this.$router.push('/packages')
