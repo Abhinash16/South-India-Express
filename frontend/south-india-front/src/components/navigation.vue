@@ -10,7 +10,7 @@
          <a><router-link to="/">Home</router-link></a> 
         </li>
         <li class="nav-item">
-         <a><router-link to="/packages">Packages</router-link></a> 
+         <a><router-link to="packages">Packages</router-link></a> 
         </li>
         <li class="nav-item">
          <a><router-link to="/contact">Contact Us</router-link></a> 
