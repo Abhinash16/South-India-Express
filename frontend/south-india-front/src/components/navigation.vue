@@ -25,7 +25,7 @@
               <a class="dropdown-item" href="#">My Bookings</a>
                <a class="dropdown-item" v-on:click="logout">Logout</a> 
             </div>
-          </li>
+          </li> 
       </ul>
     </div>
   </nav>

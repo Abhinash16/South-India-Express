@@ -66,11 +66,7 @@ export default {
   },
   methods:{
     view: function(id){
-<<<<<<< HEAD
       var path='/package/' + id
-=======
-     var path='/'+id;
->>>>>>> 8082404980874ac8d519638876e9fe79e0d5d2ba
       this.$router.push({ path: path , params: { id:id }})
     }
   }
