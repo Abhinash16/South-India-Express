@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row ">
         <div class="control-group col-md-12" id="fields">
-            <label class="control-label" for="field1">Add Passenger</label>
+            <label class="control-label" for="field1">Add Passenger Details</label>
             <div class="controls "> 
                 <form role="form" autocomplete="off">
                     <div class="entry input-group col-xs-3">
@@ -22,7 +22,7 @@
             </div>
         </div>
 	</div>
-
+    <hr>
     <div class="coaches" >
       <label for="e">Executive Coach</label>
       <input type="radio" v-model="response" name="options" :value="executive" id="e" >|
@@ -32,7 +32,7 @@
       <input type="radio" v-model="response" name="options" :value="club" id="c">
 
     </div>
-
+    
     <div class="seats" v-if="response == executive">
         <lable>select seat:</lable>
         <select for="seatexecutive">
@@ -75,6 +75,10 @@
     <div class="addon" v-if=" response == club">
      wifi: <input type="checkbox">
     spa: <input type="checkbox">
+    </div>
+    <hr>
+    <div>
+        <button>Submit</button>
     </div>
 </div>
 
@@ -138,28 +142,6 @@ $(function()
     font-size: 12px;
 }
 
-<<<<<<< HEAD
-</template>
-
-
-<script>
-export default {
-    data(){
-        return{
-                packages:[]
-        }
-    },
-    beforeMount() {
-     var id = this.$route.params.id
-     console.log(id)
-        this.$http.get('http://localhost:8080/api/display/'+ id)
-      .then(response=>{
-        this.packages= response.body;
-      })
-  },
-}
-</script>
-=======
 .entry button{
     margin-left: 5px;
 }
@@ -170,4 +152,3 @@ export default {
 margin: 10px 0px 10px 0px;
 }
 </style>
->>>>>>> 825b2f1708a4fd3582b23d3855d8e4c45f73a337
