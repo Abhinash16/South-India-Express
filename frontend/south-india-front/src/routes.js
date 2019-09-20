@@ -4,6 +4,10 @@ import login from './components/login'
 import signup from './components/signup';
 import contact from './components/contact';
 import dashboard from './components/admin/dashboard';
+import display from './components/displaypack';
+import myaccount from './components/myaccount';
+import registration from './components/registration.vue'
+
 
 export default[
     {path:'/', component:HomeComponent},
@@ -11,7 +15,10 @@ export default[
     {path:'/login', component:login},
     {path:'/signup', component:signup},
     {path:'/contact', component:contact},
-    
+    {path:'/packages/:id', component:display},
+    {path:'/login/myaccount', component:myaccount},
+    {path:'/product/registration', component:registration}
+
     
 
 

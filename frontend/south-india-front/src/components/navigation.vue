@@ -6,17 +6,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-         <a><router-link to="/">Home</router-link></a> 
+        <li class="nav-item">
+         <a><router-link to="/" exact-active-class="active" >Home</router-link></a> 
         </li>
         <li class="nav-item">
-         <a><router-link to="packages">Packages</router-link></a> 
+         <a><router-link to="/packages"  exact-active-class="active">Packages</router-link></a> 
         </li>
         <li class="nav-item">
-         <a><router-link to="/contact">Contact Us</router-link></a> 
+         <a><router-link to="/contact"  exact-active-class="active">Contact Us</router-link></a> 
         </li>
         <li class="nav-item" v-if="!login">
-         <a><router-link to="/login">Login</router-link></a> 
+         <a><router-link to="/login"  exact-active-class="active">Login</router-link></a> 
         </li>
          <li class="nav-item dropdown" v-if="login">
             <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -38,7 +38,8 @@ export default {
   name: 'navigation',
   data(){
     return{
-      login:false
+      login:false,
+      active1:true
     }
   },
   created(){
@@ -93,6 +94,10 @@ li.nav-item {
 
 .navbar-collapse ul li a:hover{
   color: green
+}
+.active{
+  border-bottom: 3px solid yellow;
+  padding-bottom: 7px
 }
 
 </style>

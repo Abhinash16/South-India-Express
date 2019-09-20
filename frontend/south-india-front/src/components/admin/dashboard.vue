@@ -1,12 +1,6 @@
 <template>
   <div class="dashboard">
-<<<<<<< HEAD
     <p>this is working</p>
-=======
-
-      
-    
->>>>>>> 0bf09adcf6eace2eb73352a84d56ab48c24818f2
   </div>
 </template>
 

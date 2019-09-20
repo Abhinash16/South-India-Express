@@ -18,8 +18,13 @@
                 </p>
                   
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" v-on:click="view(pack.package_id)">View more</button>
+                    <div class="btn-group cust">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" >
+                      <router-link :to="{path: 'packages/' + pack.package_id, params : {id: pack.package_id}}">View Detail</router-link>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" >
+                      <router-link :to="{path: 'packages/' + pack.package_id, params : {id: pack.package_id}}">Book Now</router-link>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -61,7 +66,8 @@ export default {
   },
   methods:{
     view: function(id){
-      this.$router.push({ path: '/' , params: { id: this.packages.id }})
+      var path='/package/' + id
+      this.$router.push({ path: path , params: { id:id }})
     }
   }
 }
@@ -75,6 +81,10 @@ export default {
 .packages-container{
 font-family: 'Livvic', sans-serif;
 margin-top:100px;;
+}
+.cust a{
+  text-decoration: none !important;
+  color:black
 }
 .loader {
   border: 16px solid #f3f3f3;

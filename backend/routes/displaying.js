@@ -14,7 +14,6 @@ var Prices=JSON.parse(readJson);
 var mergedList = _.map(Packages, function(item){
     return _.extend(item, _.find(Prices, { fare_id: item.fare_id }));
 });
-console.log(mergedList)
 
 router.get('/', (req, res) => {
 	setTimeout(function(){ 
@@ -23,13 +22,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const packofone = Packages.filter((value)=>{
+    const one = mergedList.filter((value)=>{
     return value.package_id == req.params.id
     });
     
-    if (!packofone) return res.status(404).send('The packages with the given ID was not found.');
+    if (!one) return res.status(404).send('The packages with the given ID was not found.');
     
-    res.send(packofone);
+    res.send(one);
     });
 
 module.exports = router; 
