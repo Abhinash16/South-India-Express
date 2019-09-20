@@ -6,7 +6,9 @@ import contact from './components/contact';
 import dashboard from './components/admin/dashboard';
 import display from './components/displaypack';
 import myaccount from './components/myaccount';
-import registration from './components/registration.vue'
+import registration from './components/registration.vue';
+import executive from './components/executive.vue';
+import bookingform from './components/bookingform.vue'
 
 
 export default[
@@ -17,7 +19,9 @@ export default[
     {path:'/contact', component:contact},
     {path:'/packages/:id', component:display},
     {path:'/login/myaccount', component:myaccount},
-    {path:'/product/registration', component:registration}
+    {path:'/product/registration', component:registration},
+    {path:'/executive', component:executive},
+    {path:'/bookingform', component:bookingform}
 
     
 
