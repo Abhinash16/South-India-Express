@@ -8,6 +8,7 @@ import display from './components/displaypack';
 import myaccount from './components/myaccount';
 import registration from './components/registration.vue'
 import executive from './components/executive.vue'
+import bookingform from './components/bookingform.vue'
 
 
 export default[
@@ -18,11 +19,8 @@ export default[
     {path:'/contact', component:contact},
     {path:'/packages/:id', component:display},
     {path:'/login/myaccount', component:myaccount},
-    {path:'/product/registration', component:registration},
+    {path:'/registration', component:registration},
     {path:'/dashboard', component:dashboard},
-    {path:'/executive', component:executive}
-
-    
-
-
+    {path:'/executive', component:executive},
+    {path:'/packages/train/:id', component:bookingform}
 ]

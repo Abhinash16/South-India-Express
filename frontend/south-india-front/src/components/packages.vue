@@ -47,7 +47,7 @@ export default {
       return{
           toggler:false,
           packages:[],
-          prices:[]
+          prices:[],
       }
   },
   beforeMount() {

@@ -1,24 +1,36 @@
 <template>
-  <form class="form-signin">
+  <div class="packages">
+    <form class="form-signin">
+    <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Enter your Credentials</h1>
 
-  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Enter your Credentials</h1>
-  <div class="error" v-if="error">
-      <p>{{result.msg}}</p>
-    </div>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input class="form-control" placeholder="Email address" autofocus v-model="username">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input class="form-control" placeholder="Password" v-model="password">
-  <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" v-on:click="signup">Login</button>
-  </form>
+    <div class="error" v-if="error">
+        <p>{{result.msg}}</p>
+      </div>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input class="form-control" placeholder="Email address" autofocus v-model="username">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input class="form-control" placeholder="Password" v-model="password">
+    <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" v-on:click="signup">Login</button>
+    </form>
+    <p>or</p>
+    <router-link to="/registration">Create Account</router-link>
+
+  <div>
+  </div>
+  </div>
 </template>
 
 <script>
+import packages from './packages'
 export default {
   name: 'packages',
   components: {
   },
+  props:{
+  },
+
   data(){
     return{
         username:'',

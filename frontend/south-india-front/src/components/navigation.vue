@@ -21,7 +21,7 @@
          <li class="nav-item dropdown" v-if="login">
             <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">My Account</a>
+              <a><router-link to="/login/myaccount">My Account</router-link></a>
               <a class="dropdown-item" href="#">My Bookings</a>
                <a class="dropdown-item" v-on:click="logout">Logout</a> 
             </div>
@@ -96,7 +96,7 @@ li.nav-item {
   color: green
 }
 .active{
-  border-bottom: 3px solid yellow;
+  border-bottom: 3px solid rgb(170, 170, 146);
   padding-bottom: 7px
 }
 
