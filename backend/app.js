@@ -7,6 +7,8 @@ const timetable = require('./routes/timetable');
 const coaches = require('./routes/coaches');
 const login = require('./routes/login')
 const display = require('./routes/displaying')
+const contact = require('./routes/contact')
+
 
 app.use(express.json());
 
@@ -17,6 +19,7 @@ app.use('/api/timetable', timetable);
 app.use('/api/coaches', coaches);
 app.use('/api/login', login);
 app.use('/api/display', display);
+app.use('/api/contact', contact);
 
 
 const port = process.env.PORT || 3000;

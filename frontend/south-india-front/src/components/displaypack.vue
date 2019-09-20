@@ -5,12 +5,12 @@
   <div class="row">
     <div class="col-sm-4">
      
-      <div class="fakeimg" v-for="pack in package">
+      <div class="fakeimg" v-for="pack in packages">
           <img :src="pack.image" width="450px;">
       </div>
      
     </div>
-    <div class="col-sm-8 custom" v-for="pack in package">
+    <div class="col-sm-8 custom" v-for="pack in packages">
       <div class="any">
           <h2>{{pack.package_name}}</h2>
             <p>Source: {{pack.source}}</p><br>
@@ -38,7 +38,7 @@ export default {
   name: 'display',
   data(){
       return{
-          package:[]
+          packages:[]
       }
   },
   components: {
@@ -52,7 +52,7 @@ beforeMount() {
      console.log(id)
     this.$http.get('http://localhost:8080/api/display/'+ id)
       .then(response=>{
-        this.package= response.body;
+        this.packages= response.body;
       })
   },
 }

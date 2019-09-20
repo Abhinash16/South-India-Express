@@ -23,7 +23,7 @@
                       <router-link :to="{path: 'packages/' + pack.package_id, params : {id: pack.package_id}}">View Detail</router-link>
                       </button>
                       <button type="button" class="btn btn-sm btn-outline-secondary" >
-                      <router-link :to="{path: 'packages/' + pack.package_id, params : {id: pack.package_id}}">Book Now</router-link>
+                      <router-link :to="{path: 'packages/train/' + pack.package_id, params : {id: pack.package_id}}">Book Now</router-link>
                       </button>
                     </div>
                   </div>

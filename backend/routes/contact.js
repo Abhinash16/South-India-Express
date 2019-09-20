@@ -19,18 +19,11 @@ router.post('/', (req, res)=>{
    else if(!email){
     res.send({'err':1,msg:'Email is required'})
     }
-    else if (email){
-        // var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(!email.value.match(re))
-          {
-            res.send({'err':1,msg:'type valid email'})
-        }  
-    }
     else if(!message){
     res.send({'err':1,msg:'Message is required'})
     }
     else{
-        res.send({'err':0,msg:'Sucessfull'})
+        res.send({'err':0,msg:'You are recorded! Will get in touch soon'})
     }
     
 

@@ -72,14 +72,27 @@ export default {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
+  margin: 5px 5px 5px 5px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin: 5px 5px 10px 5px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+input.form-control {
+    margin: 10px 10px 10px 10px;
+}
+button.btn.btn-lg.btn-primary.btn-block.mt-2 {
+    margin: 10px;
+}
+h1.h3.mb-3.font-weight-normal {
+    margin: 5px;
+    font-size: 26px;
+}
+textarea .form-control{
+      margin: 10px 10px 10px 10px
 }
 .error{
   color: red;

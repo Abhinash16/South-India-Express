@@ -56,7 +56,7 @@
 </template>   
 
 <script>
-
+import VueSweetalert2 from 'vue-sweetalert2';
 export default {
   name: 'packages',
   components: {
@@ -82,9 +82,9 @@ export default {
        })
       .then(response=>{
       this.result= response.body;
-    //   console.log(this.result);
+      console.log(this.result);
       if(this.result.err == 0){
-          alert(this.result.msg)
+          this.$swal(this.result.msg)
             this.$router.push('/packages')
         }else{
           this.error = true
