@@ -9,6 +9,8 @@ import myaccount from './components/myaccount';
 import registration from './components/registration.vue'
 import executive from './components/executive.vue'
 import bookingform from './components/bookingform.vue'
+import managetrains from './components/admin/managetrains'
+import payment from './components/payment'
 
 
 export default[
@@ -22,5 +24,7 @@ export default[
     {path:'/registration', component:registration},
     {path:'/dashboard', component:dashboard},
     {path:'/executive', component:executive},
-    {path:'/packages/train/:id', component:bookingform}
+    {path:'/packages/train/:id', component:bookingform},
+    {path:'/managetrains', component:managetrains},
+    {path:'/payment', component:payment}
 ]
