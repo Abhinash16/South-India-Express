@@ -15,6 +15,14 @@ var mergedList = _.map(Packages, function(item){
     return _.extend(item, _.find(Prices, { fare_id: item.fare_id }));
 });
 
+var fs=require('fs');
+var readJson =fs.readFileSync('trains.json', 'utf8');
+var Trains=JSON.parse(readJson);
+var fs=require('fs');
+var readJson =fs.readFileSync('timetable.json', 'utf8');
+var Timetable=JSON.parse(readJson);
+
+
 router.get('/', (req, res) => {
 	setTimeout(function(){ 
 		  res.send(mergedList);
