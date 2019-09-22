@@ -27,26 +27,22 @@
       <label for="e">Executive Coach</label>
       <input type="radio" v-model="response" name="options" :value="executive" id="e" >|
       <label for="p">Premiere Coach</label>
-      <input type="radio" v-model="response" name="options" :value="premiere" id="p">|
+      <input type="radio" v-model="response" name="options" :value="premium" id="p">|
       <label for="c">Club Coach</label>
       <input type="radio" v-model="response" name="options" :value="club" id="c">
 
     </div>
     
     <div class="seats" v-if="response == executive">
-        <lable>select seat:</lable>
-        <select for="seatexecutive">
-            <option>e1</option>
-            <option>e2</option>
-            <option>e3</option>
-            <option>4</option>
-            <option>5</option>
+        <label>select seat:</label>
+        <select for="seatexecutive" v-for="pack in packages">
+            <option>yeah</option>
         </select>
         <p>All the add ons are includede in this package.</p>
     </div>
 
-    <div class="seats" v-if="response == premiere">
-        <lable>select seat:</lable>
+    <div class="seats" v-if="response == premium">
+        <label>select seat:</label>
         <select for="seatpremier">
             <option>p1</option>
             <option>p2</option>
@@ -58,7 +54,7 @@
     </div>
 
     <div class="seats" v-if="response == club">
-        <lable>select seat:</lable>
+        <label>select seat:</label>
         <select for="seatclub"> 
             <option>c1</option>
             <option>c2</option>
@@ -69,12 +65,23 @@
         <p>No add ons available, you can select if you want.</p>
     </div>
 
-    <div class="addon" v-if="response == premier">
-        spa: <input type="checkbox">
+    <div class="addon" v-if="response == premium"  v-for="pack in packages">
+        spa: <input type="checkbox" v-model="addons" :value="pack.wifi">
     </div>
-    <div class="addon" v-if=" response == club">
-     wifi: <input type="checkbox">
-    spa: <input type="checkbox">
+    <div class="addon" v-if=" response == club" v-for="pack in packages">
+     wifi: <input type="checkbox" v-model="addons" :value="pack.wifi">
+    spa: <input type="checkbox" v-model="addons" :value="pack.spa">
+    </div>
+
+    <div class="price" v-for="pack in packages" v-if="response == executive">
+        <p>Rs. {{pack.price_exeutive}}</p>
+    </div>
+      <div class="price" v-for="pack in packages" v-if="response == premium">
+        <p>Rs. {{pack.price_premier + 500}}</p>
+    </div>
+    {{addons + 2000}}
+      <div class="price" v-for="pack in packages" v-if="response == club">
+        <p>Rs. {{pack.price_club + addons }}</p>
     </div>
     <hr>
     <div>
@@ -91,13 +98,23 @@ export default {
         return{
             response:[],
             executive:'executive',
-            premium:'premiere',
-            club:'club'
-           
+            premium:'premium',
+            club:'club',
+            packages:[],
+            addons:0
         }
-    }
+    },
+    beforeMount() {
+     var id = this.$route.params.id
+     console.log(id)
+    this.$http.get('http://localhost:8080/api/display/'+ id)
+      .then(response=>{
+        this.packages= response.body;
+        console.log(this.packages)
+      })
+  },
 
-}
+} 
 
 $(function()
 {
@@ -142,6 +159,11 @@ $(function()
     font-size: 12px;
 }
 
+<<<<<<< HEAD
+</style>>
+
+
+=======
 .entry button{
     margin-left: 5px;
 }
@@ -152,3 +174,4 @@ $(function()
 margin: 10px 0px 10px 0px;
 }
 </style>
+>>>>>>> e81a76fda3c5ac184907fb26756f12936109c41d
