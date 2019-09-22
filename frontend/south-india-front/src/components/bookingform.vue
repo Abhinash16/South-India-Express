@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row ">
         <div class="control-group col-md-12" id="fields">
-            <label class="control-label" for="field1">Add Passenger</label>
+            <label class="control-label" for="field1">Add Passenger Details</label>
             <div class="controls "> 
                 <form role="form" autocomplete="off">
                     <div class="entry input-group col-xs-3">
@@ -22,7 +22,7 @@
             </div>
         </div>
 	</div>
-
+    <hr>
     <div class="coaches" >
       <label for="e">Executive Coach</label>
       <input type="radio" v-model="response" name="options" :value="executive" id="e" >|
@@ -32,7 +32,7 @@
       <input type="radio" v-model="response" name="options" :value="club" id="c">
 
     </div>
-
+    
     <div class="seats" v-if="response == executive">
         <label>select seat:</label>
         <select for="seatexecutive" v-for="pack in packages">
@@ -82,6 +82,10 @@
     {{addons + 2000}}
       <div class="price" v-for="pack in packages" v-if="response == club">
         <p>Rs. {{pack.price_club + addons }}</p>
+    </div>
+    <hr>
+    <div>
+        <button>Submit</button>
     </div>
 </div>
 
@@ -155,6 +159,19 @@ $(function()
     font-size: 12px;
 }
 
+<<<<<<< HEAD
 </style>>
 
 
+=======
+.entry button{
+    margin-left: 5px;
+}
+.coaches input{
+    margin: 0px 15px 0px 15px;
+}
+.addon{
+margin: 10px 0px 10px 0px;
+}
+</style>
+>>>>>>> e81a76fda3c5ac184907fb26756f12936109c41d
