@@ -8,6 +8,7 @@ const coaches = require('./routes/coaches');
 const login = require('./routes/login')
 const display = require('./routes/displaying')
 const contact = require('./routes/contact')
+const admin = require('./routes/admin')
 
 
 app.use(express.json());
@@ -20,6 +21,8 @@ app.use('/api/coaches', coaches);
 app.use('/api/login', login);
 app.use('/api/display', display);
 app.use('/api/contact', contact);
+app.use('/api/admin',admin);
+
 
 
 
