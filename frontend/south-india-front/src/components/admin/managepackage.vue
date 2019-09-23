@@ -1,5 +1,5 @@
 <template>
-  <div class="managetrain col-md-12">
+  <div class="managepackage col-md-12">
     <div class="col-md-12">
       <h1>Manage Packages</h1>
     </div>
