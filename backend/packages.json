@@ -4,6 +4,7 @@
         "package_id":"SIH000001",
         "package_name": "Coastal Breeze",
         "source":"Chennai",
+        "destination":"Mumbai",
         "fare_id":"FARE001",
         "image":"/img/chennai1.5ffa1816.jpg"
 
