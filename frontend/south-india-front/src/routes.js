@@ -3,14 +3,17 @@ import packages from './components/packages.vue';
 import login from './components/login'
 import signup from './components/signup';
 import contact from './components/contact';
-import dashboard from './components/admin/dashboard';
 import display from './components/displaypack';
 import myaccount from './components/myaccount';
 import registration from './components/registration.vue'
 import executive from './components/executive.vue'
 import bookingform from './components/bookingform.vue'
-import managetrains from './components/admin/managetrains'
+import feedback from './components/admin/feedback'
+import managetrain from './components/admin/managetrain'
 import payment from './components/payment'
+import adminlogin from './components/admin/adminlogin'
+import managepackage from './components/admin/managepackage'
+
 
 
 export default[
@@ -22,9 +25,12 @@ export default[
     {path:'/packages/:id', component:display},
     {path:'/login/myaccount', component:myaccount},
     {path:'/registration', component:registration},
-    {path:'/dashboard', component:dashboard},
     {path:'/executive', component:executive},
     {path:'/packages/train/:id', component:bookingform},
-    {path:'/managetrains', component:managetrains},
-    {path:'/payment', component:payment}
+    {path:'/admin/managetrain', component:managetrain},
+    {path:'/feedback', component:feedback},
+    {path:'/payment', component:payment},
+    {path:'/adminlogin', component:adminlogin},
+    {path:'/admin/managepackage', component:managepackage}
+
 ]

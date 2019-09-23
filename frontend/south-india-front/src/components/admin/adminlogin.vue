@@ -1,8 +1,8 @@
 <template>
-  <div class="packages">
+  <div class="Adminlogin">
     <form class="form-signin">
     <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Enter your Credentials</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Admin</h1>
 
     <div class="error" v-if="error">
         <p>{{result.msg}}</p>
@@ -14,8 +14,6 @@
     <input class="form-control" placeholder="Password" v-model="password">
     <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" v-on:click="signup">Login</button>
     </form>
-    <p>or</p>
-    <router-link to="/registration">Create Account</router-link>
 
   <div>
   </div>
@@ -23,9 +21,8 @@
 </template>
 
 <script>
-import packages from './packages'
 export default {
-  name: 'packages',
+  name: 'adminlogin',
   components: {
   },
   props:{
@@ -42,7 +39,7 @@ export default {
   },
   methods:{
     signup: function(){
-       this.$http.post('http://localhost:8080/api/login',{
+       this.$http.post('http://localhost:8080/api/admin/',{
          username: this.username,
         password: this.password
        })
@@ -51,11 +48,10 @@ export default {
       
       if(this.result.err == 0){
         console.log(this.result)
-        localStorage.setItem('username', this.result.username)
-        this.$router.push('/packages')
+        localStorage.setItem('adminname', this.result.username)
+        this.$router.push('/')
         }else{
           this.error = true
-
         }
       })
     }
