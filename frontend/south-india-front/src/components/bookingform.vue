@@ -159,11 +159,6 @@ $(function()
     font-size: 12px;
 }
 
-<<<<<<< HEAD
-</style>>
-
-
-=======
 .entry button{
     margin-left: 5px;
 }
@@ -174,4 +169,3 @@ $(function()
 margin: 10px 0px 10px 0px;
 }
 </style>
->>>>>>> e81a76fda3c5ac184907fb26756f12936109c41d

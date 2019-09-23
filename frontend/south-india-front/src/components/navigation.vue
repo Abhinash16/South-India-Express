@@ -26,6 +26,14 @@
                <a class="dropdown-item" v-on:click="logout">Logout</a> 
             </div>
           </li> 
+          <li class="nav-item dropdown" v-if="adminlogin">
+            <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a><router-link to="/login/myaccount">Manage Packages</router-link></a>
+              <a class="dropdown-item" href="#">Manage Trains</a>
+               <a class="dropdown-item" v-on:click="logout">Logout</a> 
+            </div>
+          </li> 
       </ul>
     </div>
   </nav>
@@ -39,6 +47,7 @@ export default {
   data(){
     return{
       login:false,
+      adminlogin:false,
       active1:true
     }
   },

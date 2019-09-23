@@ -10,6 +10,8 @@ import registration from './components/registration.vue'
 import executive from './components/executive.vue'
 import bookingform from './components/bookingform.vue'
 import managetrains from './components/admin/managetrains'
+import feedback from './components/admin/feedback'
+import managetrain from './components/admin/managetrain'
 import payment from './components/payment'
 
 
@@ -26,5 +28,7 @@ export default[
     {path:'/executive', component:executive},
     {path:'/packages/train/:id', component:bookingform},
     {path:'/managetrains', component:managetrains},
+    {path:'/admin/managetrain', component:managetrain},
+    {path:'/feedback', component:feedback},
     {path:'/payment', component:payment}
 ]
