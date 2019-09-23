@@ -15,8 +15,8 @@
             </thead>
 
             <tbody>
-                <tr v-for="train in trains">
-                    <th scope="row">{{train.length}}</th>
+                <tr v-for="package in packages">
+                    <th scope="row">{{package.length}}</th>
                     <td>{{train.train_number}}</td>
                     <td>{{train.train_name}}</td>
                     <td>{{train.package_id}}</td>
@@ -60,9 +60,9 @@ export default {
   },
   data(){
     return {
-          viewtrain:true,
+      viewtrain:true,
       addtrain:false,
-      trains:[],
+      packages:[],
       mega:[],
       index:1,
       train_number:null,
@@ -74,42 +74,42 @@ export default {
     }
   },
   beforeMount() {
-    this.$http.get('http://localhost:8080/api/trains')
+    this.$http.get('http://localhost:8080/api/packages')
       .then(response=>{
-        this.trains= response.body;
-        console.log(this.trains.length)
+        this.packages= response.body;
+        console.log(this.packages)
       })
 
-       this.$http.get('http://localhost:8080/api/display/mega')
-      .then(response=>{
-        this.mega= response.body;
-      })
+    //    this.$http.get('http://localhost:8080/api/display/mega')
+    //   .then(response=>{
+    //     this.mega= response.body;
+    //   })
   },
   methods:{
-      deletetrain:function(id){
-         this.$http.delete('http://localhost:8080/api/trains/' + id)
-        .then(response=>{
-        this.delete= response.body;
-                this.$swal('Train with id:'+ id +' has been deleted please refresh')
+    //   deletetrain:function(id){
+    //      this.$http.delete('http://localhost:8080/api/trains/' + id)
+    //     .then(response=>{
+    //     this.delete= response.body;
+    //             this.$swal('Train with id:'+ id +' has been deleted please refresh')
 
-        console.log(this.delete)
-      })
+    //     console.log(this.delete)
+    //   })
 
-      },
-      addatrain:function(){
-         this.$http.post('http://localhost:8080/api/trains/', {
-             train_number:this.train_number,
-             train_name:this.train_name,
-             package_id:this.package_id,
-             time_id:this.time_id
-         })
-        .then(response=>{
-        this.tr= response.body;
-        this.$swal('Train has been added please refresh')
-        console.log(this.tr)
-      })
+    //   },
+    //   addatrain:function(){
+    //      this.$http.post('http://localhost:8080/api/package/', {
+    //          train_number:this.train_number,
+    //          train_name:this.train_name,
+    //          package_id:this.package_id,
+    //          time_id:this.time_id
+    //      })
+    //     .then(response=>{
+    //     this.tr= response.body;
+    //     this.$swal('Train has been added please refresh')
+    //     console.log(this.tr)
+    //   })
 
-      }
+    //   }
   }
 }
 </script>
