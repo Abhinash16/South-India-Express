@@ -33,13 +33,14 @@ router.post('/', (req, res)=>{
     res.send({'err':1,msg:'Message is required'})
     }
     else{
-        Contacts.push({
-            'name': name,
-            "phone": phone,
-            "email": email,
-            "message": message
-        })
-        res.send({'err':0,msg:'You are recorded! Will get in touch soon',data: Contacts})
+       contact= {
+        'name': name,
+        "phone": phone,
+        "email": email,
+        "message": message
+    }
+    Contacts.push(contact)
+        res.send({'err':0,msg:'You are recorded! Will get in touch soon'})
     }
     
 

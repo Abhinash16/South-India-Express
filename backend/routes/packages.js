@@ -28,4 +28,43 @@ router.get('/:id', (req, res) => {
     res.send(packofone);
     });
 
+router.post('/', (req, res)=>{
+
+        let package_id = req.body.package_id
+        let package_name= req.body.package_name
+        let source= req.body.source
+        let fare_id= req.body.fare_id
+        
+       if(!package_id){
+          res.send({'err':1,msg:'Package ID is required'})
+       }
+    
+       else if(!package_name){
+          res.send({'err':1,msg:'Package name is required'})
+       }
+    
+       else if(!source){
+        res.send({'err':1,msg:'source is required'})
+        }
+        else if(!fare_id){
+        res.send({'err':1,msg:'Fare id is required'})
+        }
+        else{
+           package= {
+            'package_id': package_id,
+            "package_name": package_name,
+            "source": source,
+            "fare_id": fare_id
+        }
+        Packages.push(package)
+            res.send({'err':0,msg:'New Package Added!'})
+        }  
+    });
+    router.delete('/:id', (req, res) => {
+        var id = req.params.id;
+        const package =  _.remove(Packages, function(n) {
+          return n.package_id == id
+        })
+        res.send(package);
+      });
 module.exports = router; 
