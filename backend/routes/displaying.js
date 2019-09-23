@@ -22,12 +22,26 @@ var fs=require('fs');
 var readJson =fs.readFileSync('timetable.json', 'utf8');
 var Timetable=JSON.parse(readJson);
 
+var mergedList2 = _.map(Trains, function(item){
+    return _.extend(item, _.find(Timetable, { time_id: item.time_id }));
+});
+
+var mergedList3 = _.map(mergedList2, function(item){
+    return _.extend(item, _.find(Packages, { package_id: item.package_id }));
+});
 
 router.get('/', (req, res) => {
 	setTimeout(function(){ 
 		  res.send(mergedList);
 	}, 1000);
 });
+router.get('/mega', (req, res) => {
+	setTimeout(function(){ 
+		  res.send(mergedList3);
+	}, 1000);
+});
+
+
 
 router.get('/:id', (req, res) => {
     const one = mergedList.filter((value)=>{
