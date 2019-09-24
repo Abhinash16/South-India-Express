@@ -19,7 +19,7 @@
          <a><router-link to="/login"  exact-active-class="active">Login</router-link></a> 
         </li>
          <li class="nav-item dropdown" v-if="login">
-            <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-item dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a><router-link to="/login/myaccount">My Account</router-link></a>
               <a class="dropdown-item" href="#">My Bookings</a>
@@ -27,13 +27,13 @@
             </div>
           </li> 
           <li class="nav-item dropdown" v-if="adminlogin">
-            <a class="nav-item dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-item dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item"><router-link to="/admin/managepackage">Manage Packages</router-link></a>
               <a class="dropdown-item"><router-link to="/admin/managetrain">Manage Train</router-link></a>
               <a class="dropdown-item"><router-link to="/admin/managecoaches">Manage Coaches</router-link></a>
               <a class="dropdown-item"><router-link to="/admin/feedback">Queries</router-link></a>
-               <a class="dropdown-item" v-on:click="logout">Logout</a> 
+               <a class="dropdown-item" v-on:click="logoutAdmin">Logout</a> 
             </div>
           </li> 
       </ul>
@@ -49,7 +49,7 @@ export default {
   data(){
     return{
       login:false,
-      adminlogin:true,
+      adminlogin:false,
       active1:true
     }
   },
@@ -60,11 +60,21 @@ export default {
       }else{
         this.login= false
       }
+       var z = localStorage.getItem('adminname')
+      if(z != null){
+        this.adminlogin = true
+      }else{
+        this.adminlogin= false
+      }
   },
   methods:{
     logout: function(){
       localStorage.removeItem('username')
       this.login= false
+    },
+    logoutAdmin: function(){
+      localStorage.removeItem('adminname')
+      this.adminlogin= false
     }
   }
 }
