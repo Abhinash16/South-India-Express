@@ -1,5 +1,8 @@
 <template>
   <div class="managetrain col-md-12">
+    <div class="col-md-12">
+      <h1>Manage Trains</h1>
+    </div>
     <hr>
     <div class="view">
         <table class="table">
@@ -60,7 +63,7 @@ export default {
   },
   data(){
     return {
-          viewtrain:true,
+      viewtrain:true,
       addtrain:false,
       trains:[],
       mega:[],

@@ -31,6 +31,8 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item"><router-link to="/admin/managepackage">Manage Packages</router-link></a>
               <a class="dropdown-item"><router-link to="/admin/managetrain">Manage Train</router-link></a>
+              <a class="dropdown-item"><router-link to="/admin/managecoaches">Manage Coaches</router-link></a>
+              <a class="dropdown-item"><router-link to="/admin/feedback">Queries</router-link></a>
                <a class="dropdown-item" v-on:click="logout">Logout</a> 
             </div>
           </li> 

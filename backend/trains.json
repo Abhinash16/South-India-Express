@@ -34,5 +34,17 @@
         "train_name": "Deccan Express",
         "package_id": "SIH000006",
         "time_id":"TIME0006"
+    },
+    {
+        "train_number": "TRN00004",
+        "train_name": "Eastern Express",
+        "package_id": "SIH000007",
+        "time_id":"TIME0007"
+    },
+    {
+        "train_number": "TRN00004",
+        "train_name": "Eastern Express",
+        "package_id": "SIH000008",
+        "time_id":"TIME0008"
     }
 ]
