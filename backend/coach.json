@@ -17,7 +17,7 @@
             {
             "type":"executive",
             "seat_number":"E3",
-            "isVaccant":true
+            "isVaccant":false
              },
             {
             "type":"executive",

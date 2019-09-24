@@ -35,8 +35,8 @@
     
     <div class="seats" v-if="response == executive">
         <label>select seat:</label>
-        <select for="seatexecutive" v-for="pack in packages">
-            <option>yeah</option>
+        <select for="seatexecutive" v-for="d in exevaccant">
+            <option>d.seat_number</option>
         </select>
         <p>All the add ons are includede in this package.</p>
     </div>
@@ -101,7 +101,9 @@ export default {
             premium:'premium',
             club:'club',
             packages:[],
-            addons:0
+            addons:0,
+            exevaccant:[],
+            ev:[]
         }
     },
     beforeMount() {
@@ -110,7 +112,13 @@ export default {
     this.$http.get('http://localhost:8080/api/display/'+ id)
       .then(response=>{
         this.packages= response.body;
-        console.log(this.packages)
+       })
+
+       this.$http.get('http://localhost:8080/api/coaches/evaccant')
+      .then(response=>{
+        this.exevaccant= response.body;
+        this.ev = this.exevaccant[0].seats
+        console.log(ev)
       })
   },
 
