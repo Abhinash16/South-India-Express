@@ -50,7 +50,7 @@ export default {
       this.result= response.body;
       
       if(this.result.err == 0){
-        console.log(this.result)
+    
         localStorage.setItem('username', this.result.username)
         this.$router.push('/packages')
         }else{

@@ -71,10 +71,12 @@ export default {
     logout: function(){
       localStorage.removeItem('username')
       this.login= false
+      this.$router.push('/')
     },
     logoutAdmin: function(){
       localStorage.removeItem('adminname')
       this.adminlogin= false
+      this.$router.push('/')
     }
   }
 }

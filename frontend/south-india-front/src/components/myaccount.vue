@@ -12,9 +12,9 @@
                         </div>
                     </div>
                    
-                    <div class="profile-head col-md-6">
+                    <div class="profile-head col-md-6" v-for="d in user">
                             <h5>
-                                Sharukh Khan
+                               {{d.name}}
                             </h5>
                             <h6>
                                 Ticket Agent
@@ -36,34 +36,34 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>User Id</label>
+                                                <label>Username</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>sharukh123</p>
+                                            <div class="col-md-6" v-for="d in user">
+                                                <p>{{d.username}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Name</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>sharukh khan</p>
+                                             <div class="col-md-6" v-for="d in user">
+                                                <p>{{d.name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Email</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>sharukh@gmail.com</p>
+                                             <div class="col-md-6" v-for="d in user">
+                                                <p>{{d.email}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Phone</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>9876543210</p>
+                                            <div class="col-md-6" v-for="d in user">
+                                                <p>{{d.phone}}</p>
                                             </div>
                                         </div>
                             </div>
@@ -77,7 +77,20 @@
 <script>
 export default {
   name: 'myprofile',
+  data(){
+      return{
+          user:[]
+      }
+  },
   props: {
+  },
+  beforeCreate(){
+       var y = localStorage.getItem('username')
+      this.$http.get('http://localhost:8080/api/login/'+ y)
+      .then(response=>{
+        this.user= response.body;
+        console.log(this.user)
+      })
   }
 }
 </script>

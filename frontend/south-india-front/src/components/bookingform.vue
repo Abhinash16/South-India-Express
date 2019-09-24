@@ -2,9 +2,13 @@
 <div class="container">
 	<div class="row ">
         <div class="control-group col-md-12" id="fields">
-            <label class="control-label" for="field1">Add Passenger Details</label>
             <div class="controls "> 
                 <form role="form" autocomplete="off">
+                    <div class="jumbotron" v-for="pack in packages" >
+                        <p>Booking for ID: {{pack.package_id}}</p>
+                        <p>Booking for : {{pack.package_name}}</p>
+                        <p>Booking for Source: {{pack.source}}</p>
+                    </div>
                     <div class="entry input-group col-xs-3">
                         <input class="form-control" name="name" type="text" placeholder="Name" />
                         <input class="form-control " name="age" type="text" placeholder="Age" />
@@ -35,8 +39,8 @@
     
     <div class="seats" v-if="response == executive">
         <label>select seat:</label>
-        <select for="seatexecutive" v-for="d in exevaccant">
-            <option>d.seat_number</option>
+        <select for="seatexecutive">
+            <option  v-for="d in vaccantexecutive">{{d.seat_number}}</option>
         </select>
         <p>All the add ons are includede in this package.</p>
     </div>
@@ -44,11 +48,7 @@
     <div class="seats" v-if="response == premium">
         <label>select seat:</label>
         <select for="seatpremier">
-            <option>p1</option>
-            <option>p2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option  v-for="d in vaccantpremier">{{d.seat_number}}</option>
         </select>
         <p>Wifi is included but not spa, select if you want.</p>
     </div>
@@ -56,33 +56,25 @@
     <div class="seats" v-if="response == club">
         <label>select seat:</label>
         <select for="seatclub"> 
-            <option>c1</option>
-            <option>c2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option  v-for="d in vaccantclub">{{d.seat_number}}</option>
         </select>
         <p>No add ons available, you can select if you want.</p>
     </div>
 
     <div class="addon" v-if="response == premium"  v-for="pack in packages">
-        spa: <input type="checkbox" v-model="addons" :value="pack.wifi">
+        spa: <input type="checkbox"  :value="pack.wifi">
     </div>
     <div class="addon" v-if=" response == club" v-for="pack in packages">
-     wifi: <input type="checkbox" v-model="addons" :value="pack.wifi">
-    spa: <input type="checkbox" v-model="addons" :value="pack.spa">
+     wifi: <input type="checkbox" v-model="spa" :value="pack.spa">
+    spa: <input type="checkbox" v-model="wifi"  :value="pack.wifi">
     </div>
 
-    <div class="price" v-for="pack in packages" v-if="response == executive">
-        <p>Rs. {{pack.price_exeutive}}</p>
+    <div class="price" >
+        <p>Rs. {{totalprice}}</p>
     </div>
-      <div class="price" v-for="pack in packages" v-if="response == premium">
-        <p>Rs. {{pack.price_premier + 500}}</p>
-    </div>
-    {{addons + 2000}}
-      <div class="price" v-for="pack in packages" v-if="response == club">
-        <p>Rs. {{pack.price_club + addons }}</p>
-    </div>
+     
+    {{spa}}
+    {{wifi}}
     <hr>
     <div>
         <button>Submit</button>
@@ -101,25 +93,48 @@ export default {
             premium:'premium',
             club:'club',
             packages:[],
-            addons:0,
-            exevaccant:[],
-            ev:[]
+            wifi:[],
+            spa:[],
+            totalprice:0,
+            vaccantexecutive:[],
+            vaccantpremier:[],
+            vaccantclub:[]
         }
     },
     beforeMount() {
      var id = this.$route.params.id
      console.log(id)
+
     this.$http.get('http://localhost:8080/api/display/'+ id)
       .then(response=>{
         this.packages= response.body;
+        console.log(this.packages)
        })
 
-       this.$http.get('http://localhost:8080/api/coaches/evaccant')
+       this.$http.get('http://localhost:8080/api/coaches/executive/vaccant')
       .then(response=>{
-        this.exevaccant= response.body;
-        this.ev = this.exevaccant[0].seats
-        console.log(ev)
+        this.vaccantexecutive= response.body;
       })
+
+      this.$http.get('http://localhost:8080/api/coaches/premier/vaccant')
+      .then(response=>{
+        this.vaccantpremier= response.body;
+      })
+      this.$http.get('http://localhost:8080/api/coaches/club/vaccant')
+      .then(response=>{
+        this.vaccantclub= response.body;
+      })
+  },
+  methods:{
+      executives: function(){
+          this.totalprice = this.totalprice + this.packages[0].price_exeutive
+      },
+      premier: function(){
+          this.totalprice = this.totalprice + this.packages[0].price_premier
+      },
+      club: function(){
+          this.totalprice = this.totalprice + this.packages[0].price_club
+      }
   },
 
 } 

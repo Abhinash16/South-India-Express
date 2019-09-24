@@ -1,8 +1,18 @@
 [
     {
-        "username": "Abhinash",
+        "name":"Abhinash",
         "lastname":"Sharma",
+        "username": "abhinash16",
         "password": "123456",
-        "email":"abhinash@gmail.com"
+        "email":"abhinash@gmail.com",
+        "phone":"4578541254"
+     },
+     {
+        "name":"Sai",
+        "lastname":"Krishna",
+        "username": "sai123",
+        "password": "sai123",
+        "email":"saih@gmail.com",
+        "phone":"4578541254"
      }
 ]

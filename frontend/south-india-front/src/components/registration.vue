@@ -8,24 +8,27 @@
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <label for="firstName">Name</label>
+            <input type="text" class="form-control" v-model="name" id="firstName" placeholder="" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <label for="lastName">Username</label>
+            <input type="text" class="form-control"  v-model="username" id="lastName" placeholder="" value="" required v-on:keyup.enter="check"> <button v-on:click="check">Check</button>
             <div class="invalid-feedback">
               Valid last name is required.
+            </div>
+            <div class="" v-if="!valid">
+              Username is taken
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" v-model="email" id="email" placeholder="you@example.com">
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
@@ -33,18 +36,19 @@
 
         <div class="mb-3">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" required>
+          <input type="password" class="form-control" v-model="password" id="password" required>
           <div class="invalid-feedback">
             Please enter password.
           </div>
         </div>
         <div class="mb-3">
           <label for="password">Repeat Password</label>
-          <input type="password" class="form-control" id="password"  required>
+          <input type="password" class="form-control" v-model="repeatpassword" id="cpassword"  required>
           <div class="invalid-feedback">
             Not a Match
           </div>
         </div>
+        {{username}}
         <button class="btn btn-primary btn-md" type="submit">Sign In</button>
       </form>
   </div>
@@ -57,6 +61,39 @@
 export default {
   name: 'registration',
   props: {
+  },
+  data(){
+    return{
+      name:null,
+      username:null,
+      usernames:[],
+      valid:true,
+      password:null,
+      repeatpassword:null,
+      notcorrect:false,
+      email:null
+    }
+  },
+  beforeMount(){
+    this.$http.get('http://localhost:8080/api/login/user/names')
+      .then(response=>{
+        this.usernames= response.body;
+        console.log(this.usernames)
+      })
+  },
+  methods:{
+    check: function(){
+      console.log('working')
+      for (var i in this.usernames){
+      if(this.username == this.usernames[i]){
+        console.log('Taken')
+        this.valid = false;
+      }else{
+
+        this.valid = true;
+      }
+      }
+    }
   }
 }
 </script>

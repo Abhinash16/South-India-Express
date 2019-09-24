@@ -22,7 +22,7 @@
             {
             "type":"executive",
             "seat_number":"E4",
-             "isVaccant":true
+             "isVaccant":false
              },
              {
             "type":"executive",
